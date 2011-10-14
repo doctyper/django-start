@@ -152,3 +152,17 @@ USE_I18N = True
 
 # Display numbers and dates using the format of the current locale
 USE_L10N = True
+
+
+# Which settings are passed by RequestContext to the templates
+# Keep this list small, as it is passed to each request.
+# Uncomment more settings as needed
+VIEW_SETTINGS = {
+    # 'ADMIN_MEDIA_PREFIX':    ADMIN_MEDIA_PREFIX,
+    # 'ADMINS'            :    ADMINS            ,
+    'ENVIRONMENT'       :    ENVIRONMENT       ,
+    'LANGUAGE_CODE'     :    LANGUAGE_CODE     ,
+    # 'MANAGERS'          :    MANAGERS          ,
+    # 'TEMPLATE_DEBUG'    :    TEMPLATE_DEBUG    ,
+    # 'TIME_ZONE'         :    TIME_ZONE         ,
+}
