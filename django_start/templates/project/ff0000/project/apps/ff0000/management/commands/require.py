@@ -16,6 +16,16 @@ class Command(BaseCommand):
         # assume project.settings.ENVIRONMENT else default to 'development'
         env = environ['DJANGO_SETTINGS_MODULE'].split(".")[-1]
         env = 'development' if env == 'settings' else env
-        system('pip install -r ../deploy/requirements/base.txt')
-        system('pip install -r ../deploy/requirements/%s.txt' % env)
-        logging.info("Require success")
+        
+        # Loop through available PyPi mirrors
+        # See http://jacobian.org/writing/when-pypi-goes-down/
+        installed = False
+        mirrors = ['b.pypi', 'c.pypi', 'd.pypi', 'pypi',]
+        while not installed and len(mirrors) > 0:
+            mirror = mirrors.pop()
+            result = system('pip install -i http://%s.python.org/simple -r ../deploy/requirements/base.txt -r ../deploy/requirements/%s.txt' % (mirror, env))
+            installed = (result == 0)
+        if installed:
+            logging.info("Require success")
+        else:
+            logging.error("Could not install all requirements")
