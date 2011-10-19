@@ -1,3 +1,5 @@
+* 0.1.15: 2011/10/19   Edited ff0000 project template to removes *.pyc
+ 
 * 0.1.14: 2011/10/14   Loop through PyPi mirrors in 'manage.py require'
 
 * 0.1.13: 2011/10/11   Only passes settings.VIEW_SETTINGS in ContextRequests

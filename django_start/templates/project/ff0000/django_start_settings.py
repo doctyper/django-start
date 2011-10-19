@@ -11,6 +11,7 @@ from string import ascii_lowercase, digits
 def after_copy(no_prompt=False):
     """Steps to run after the templates has been copied in place."""
     # 1. Import red-boilerplate in place using git
+    os.system("find . -name '*.pyc' -exec rm -rf {} \;")
     os.system("git init")
     os.system("git add .")
     os.system("git commit -m'Django project created with django-start'")
