@@ -9,13 +9,13 @@
 from django_start import management
 from shutil import rmtree
 from os import chdir, system
+from sys import exit as sys_exit
 
 PROJECT_FOLDER = 'test-project'
 
 rmtree(PROJECT_FOLDER, ignore_errors=True)
 management.execute_from_command_line(
     ['django-start.py', 'project', '--no-prompt', PROJECT_FOLDER])
-chdir(PROJECT_FOLDER)
 system('virtualenv env')
 system('source env/bin/activate')
 chdir('project')
@@ -26,6 +26,6 @@ system('python manage.py sync')
 # system('python manage.py test') 
 
 # TODO: Add the test to create an 'app' as well.
-
 chdir('../../')
 rmtree(PROJECT_FOLDER)
+sys_exit(0)
