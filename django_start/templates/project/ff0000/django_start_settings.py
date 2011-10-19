@@ -55,3 +55,5 @@ def after_copy(no_prompt=False):
                 data = data.replace(old_val, new_val)
             with open(filepath, 'w') as f:
                 f.write(data)
+
+    os.system("git commit -a -m'Replaced boilerplate variables'")
