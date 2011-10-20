@@ -1,3 +1,5 @@
 # A file to write tests related to entire project
-# such as testing that personal settings are either or not loaded
 
+# TODO: Personal settings should be loaded
+
+# TODO: There should not be a LICENSE file

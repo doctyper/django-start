@@ -22,7 +22,7 @@ system('source env/bin/activate')
 chdir('project')
 system('python manage.py require')
 system('python manage.py sync')
-
+system('python manage.py test ff0000')
 management.execute_from_command_line(
     ['django-start.py', 'app', '--no-prompt', APP_FOLDER])
 

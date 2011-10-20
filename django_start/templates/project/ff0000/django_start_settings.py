@@ -17,7 +17,8 @@ def after_copy(no_prompt=False):
     os.system("git commit -m'Django project created with django-start'")
     os.system("git remote add --fetch --no-tags --track master boilerplate git://github.com/ff0000/red-boilerplate.git")
     os.system("git pull boilerplate master")
-    os.system("git rm README.md")
+    os.system("git rm --ignore-unmatch README.md")
+    os.system("git rm --ignore-unmatch LICENSE.txt")
     os.system("git mv INSTRUCTIONS.md README.md")
     os.system("git commit -m'Restored django-start README.md'")
 
