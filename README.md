@@ -51,6 +51,7 @@ This command will:
 * run the test suite for the app
 
 If everything runs correctly, then submit a pull request via Github.
+
 You can have the tests run automatically before any commit by adding an executable file `.git/hooks/pre-commit` with this code:
 
     #!/bin/sh

@@ -169,3 +169,18 @@ VIEW_SETTINGS = {
     # 'TEMPLATE_DEBUG'    :    TEMPLATE_DEBUG    ,
     # 'TIME_ZONE'         :    TIME_ZONE         ,
 }
+
+if DEBUG:
+    # Load host-specific configuration file from hosts/[hostname].py
+    from socket import gethostname # Hostname based local settings 
+    hostname = gethostname().split('.')[0]
+    try:
+        _f = __file__              
+        path = os.path.join(PROJECT_ROOT, 'settings')
+        sys.path.insert(0, path)   
+        globals().update(__import__(hostname).__dict__)
+        sys.path.remove(path)      
+        __file__ = _f              
+    except ImportError, e:
+        pass # Uncomment the following line to print an error instead
+        # print >> sys.stderr, '[33mLocal settings file: [[34msettings/%s.py[33m] error:[0m\n%s' % (hostname,e)
