@@ -44,4 +44,14 @@ Fork the project, make your changes, then run
 
     python test.py
     
-which will create a test project using django-start. If everything runs correctly, then submit a pull request via Github. 
+This command will:
+
+* create a test project using the `ff0000` template
+* create a test app inside that project using the `blog` template
+* run the test suite for the app
+
+If everything runs correctly, then submit a pull request via Github.
+You can have the tests run automatically before any commit by adding an executable file `.git/hooks/pre-commit` with this code:
+
+    #!/bin/sh
+    python test.py || exit 1
