@@ -36,7 +36,9 @@ class Command(BaseCommand):
         if os.path.exists(settings_path):
             sys.path.append(app_dir)
             import django_start_settings
+            reload(django_start_settings)
             if callable(getattr(django_start_settings, 'after_copy', None)):
                 # Don't change current directory (there are two in this case)
-                django_start_settings.after_copy(no_prompt=no_prompt,
-                    project_folder=project_folder)
+                django_start_settings.after_copy(project_folder=project_folder,
+                    no_prompt=no_prompt)
+            sys.path.remove(app_dir)

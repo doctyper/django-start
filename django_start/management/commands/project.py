@@ -31,10 +31,12 @@ class Command(BaseCommand):
         if os.path.exists(settings_path):
             sys.path.append(copy_from)
             import django_start_settings
+            reload(django_start_settings)
             if callable(getattr(django_start_settings, 'after_copy', None)):
                 # First change current directory to copy_to
                 os.chdir(copy_to)
                 no_prompt = options.get('no_prompt', False)
                 django_start_settings.after_copy(no_prompt=no_prompt)
+            sys.path.remove(copy_from)
             
         
