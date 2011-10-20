@@ -62,6 +62,9 @@ INSTALLED_APPS = (
 # A tuple of IP addresses that see debug comments, when DEBUG is True
 INTERNAL_IPS = ('0.0.0.0', '127.0.0.1',)
 
+# Number of items to show in a RSS Feed
+ITEMS_PER_FEED = 5
+
 # The language code for this installation
 LANGUAGE_CODE = 'en-us'
 

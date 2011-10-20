@@ -1,3 +1,5 @@
+* 0.1.19: 2011/10/20   Fixed '/feed' for 'blog' app template
+
 * 0.1.18: 2011/10/19   Added 'test.py', described in README
 
 * 0.1.17: 2011/10/19   MIT License
