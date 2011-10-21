@@ -37,11 +37,10 @@ def after_copy(no_prompt=False):
             else:
                 prompt = '%s [%s]: ' % (help, default)
                 replace[placemark] = raw_input(prompt) or default
-    # Also replace SECRET_KEY
     key_seed = ''.join([choice(ascii_lowercase + digits) for x in range(50)])
     replace['__SECRET_KEY_SEED__'] = key_seed
 
-    # WATCH OUT!! This resets permissions!! Change with shutil
+    # FIXME: This resets permissions!! Change with shutil
     # TODO: Also replace variables in file names
     for root, dirs, files in os.walk('.'):
         DONT_REPLACE_IN = ['.svn', '.git',]
