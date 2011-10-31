@@ -10,3 +10,6 @@ docutils          == 0.8.1
 
 #--- Testing
 random_instances  == 0.0.3  # to retrieve or get random instances while testing
+
+#--- Boilerplate requirements
+Mercurial==1.9.3
