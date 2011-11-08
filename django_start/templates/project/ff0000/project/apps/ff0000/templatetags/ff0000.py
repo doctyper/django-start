@@ -2,6 +2,12 @@ from django import template
 
 register = template.Library()
 
+class VerbatimNode(template.Node): 
+	def __init__(self, text): 
+		self.text = text
+	def render(self, context): 
+		return self.text
+
 @register.tag
 def verbatim(parser, token):
     text = []
@@ -19,3 +25,5 @@ def verbatim(parser, token):
         elif token.token_type == template.TOKEN_BLOCK:
             text.append('%}')
     return VerbatimNode(''.join(text))
+
+
