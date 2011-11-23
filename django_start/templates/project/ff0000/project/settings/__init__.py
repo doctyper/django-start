@@ -147,8 +147,8 @@ TIME_ZONE = 'America/Los_Angeles'
 # Output the "Etag" header. This saves bandwidth but slows down performance
 USE_ETAGS = False
 
-# Display numbers using a thousand separator
-USE_THOUSAND_SEPARATOR = True
+# Display numbers using a thousand separator - generally a bad idea
+USE_THOUSAND_SEPARATOR = False
 
 # Enable Django's internationalization system
 USE_I18N = True
@@ -166,7 +166,7 @@ VIEW_SETTINGS = {
     'ENVIRONMENT'       :    ENVIRONMENT       ,
     'LANGUAGE_CODE'     :    LANGUAGE_CODE     ,
     # 'MANAGERS'          :    MANAGERS          ,
-    # 'TEMPLATE_DEBUG'    :    TEMPLATE_DEBUG    ,
+    'TEMPLATE_DEBUG'    :    TEMPLATE_DEBUG    ,
     # 'TIME_ZONE'         :    TIME_ZONE         ,
 }
 
