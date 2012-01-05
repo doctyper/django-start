@@ -38,5 +38,7 @@ class Command(BaseCommand):
                 no_prompt = options.get('no_prompt', False)
                 django_start_settings.after_copy(no_prompt=no_prompt)
             sys.path.remove(copy_from)
+
+        print "If you want to include grappelli static files in your repo use python manage.py collectstatic"
             
         
