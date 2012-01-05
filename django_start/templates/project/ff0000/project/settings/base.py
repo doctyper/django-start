@@ -24,6 +24,13 @@ DEFAULT_FROM_EMAIL = '__ADMIN_EMAIL__'
 # Set the subject prefix for email messages sent to admins and managers
 EMAIL_SUBJECT_PREFIX = '[__PROJECT_NAME__] '
 
+DEFAULT_FROM_EMAIL = 'mailer@ff0000.com'
+EMAIL_HOST = 'mailer.ff0000.com'
+EMAIL_HOST_USER = 'mailer'
+EMAIL_HOST_PASSWORD = '0ut80und+53nd_'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Enviroment (development, staging, test, production) affects the admin colors
 ENVIRONMENT = 'development' # admin links will be green
 
