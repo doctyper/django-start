@@ -14,10 +14,14 @@ urlpatterns = patterns('',
     (r'^$', TemplateView.as_view(template_name='home.html')),
 )
 
-# Django should never serve files in production.
-if settings.DEBUG:
-    # Static URLs
-    urlpatterns += staticfiles_urlpatterns()
+# Static URLs
+urlpatterns += staticfiles_urlpatterns()
 
+# Static admin URLs
+urlpatterns.insert(-2, url(r'^%s(?P<path>.*)' % settings.ADMIN_MEDIA_PREFIX[1:],
+    'django.views.static.serve', {'document_root': settings.ADMIN_MEDIA_ROOT}))
+
+# Upload URLS
+if settings.DEBUG:
     urlpatterns.insert(-2, url(r'^%s(?P<path>.*)' % settings.MEDIA_URL[1:],
         'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))

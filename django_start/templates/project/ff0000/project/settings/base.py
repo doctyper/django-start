@@ -5,6 +5,14 @@ import sys
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
 
+# URL prefix for CSS, JavaScript and images used by the Django admin.
+# Use a trailing slash, and to have this be different from MEDIA_URL
+# For integration with staticfiles, this should be  STATIC_URL + 'admin/'.
+# Make it different to not host on CDN
+ADMIN_MEDIA_PREFIX = '/static-local/admin/'
+
+ADMIN_MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static-local', 'admin')
+
 # People who get code error notifications when DEBUG=False
 ADMINS = (('__PROJECT_NAME__ administrator', '__ADMIN_EMAIL__'),)
 
@@ -107,18 +115,13 @@ SET_MIMETYPE = True
 SITE_ID = 1
 
 # Absolute path to the directory where collectstatic will collect static files
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = ''
 
 # URL to use when referring to static files located in STATIC_ROOT
 STATIC_URL = '/static/'
 
-# XXX: This is going away in 1.4 but we need it for grappelli for now
-# URL prefix for CSS, JavaScript and images used by the Django admin.
-# Use a trailing slash, and to have this be different from MEDIA_URL
-# For integration with staticfiles, this should be  STATIC_URL + 'admin/'.
-# Make it different to not host on CDN
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
-
+# Additional locations the staticfiles app will traverse
+STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'),)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
