@@ -16,13 +16,8 @@ PROJECT_FOLDER = 'test-project'
 rmtree(PROJECT_FOLDER, ignore_errors=True)
 management.execute_from_command_line(
     ['django-start.py', 'project', '--no-prompt', PROJECT_FOLDER])
-system('virtualenv env')
-system('source env/bin/activate')
-chdir('project')
-system('python manage.py require')
-system('python manage.py sync')
-system('python manage.py test ff0000')
+system('sh scripts/setup.sh' )
+system('env/bin/python project/manage.py test ff0000')
 
-
-chdir('../../')
+chdir('../')
 rmtree(PROJECT_FOLDER)
