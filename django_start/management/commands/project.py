@@ -5,7 +5,7 @@ from django_start.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
     help = """Create a Django project from a template.
-    
+
     The template must include a file called `django_start.py` that contains
     the documentation for the template, the optional boilerplate variables
     to substitute with prompt values and the actions to perform after having
@@ -13,10 +13,10 @@ class Command(BaseCommand):
 
     args = "[project_folder]"
 
-    TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 
+    TEMPLATE_DIR = os.path.join(os.path.dirname(__file__),
         '..', '..', 'templates', 'project', 'ff0000')
 
-    option_list = BaseCommand.option_list + (make_option('--template-dir', 
+    option_list = BaseCommand.option_list + (make_option('--template-dir',
         action='store', default=TEMPLATE_DIR, help='Project template to use'),)
 
     def handle(self, *args, **options):
@@ -38,7 +38,3 @@ class Command(BaseCommand):
                 no_prompt = options.get('no_prompt', False)
                 django_start_settings.after_copy(no_prompt=no_prompt)
             sys.path.remove(copy_from)
-
-        print "If you want to include grappelli static files in your repo use python manage.py collectstatic"
-            
-        
