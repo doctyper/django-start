@@ -19,12 +19,11 @@ Running a project
 -----------------
 
     cd example
-    virtualenv env
+    sh scripts/setup.sh
     source env/bin/activate
     cd project
-    python manage.py require
-    python manage.py sync
-    python manage.py server
+    python manage.py syncdb
+    python manage.py runserver
 
 
 How to contribute
