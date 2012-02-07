@@ -2,16 +2,9 @@ import os.path
 import sys
 
 # Include apps on the path
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
-
-# URL prefix for CSS, JavaScript and images used by the Django admin.
-# Use a trailing slash, and to have this be different from MEDIA_URL
-# For integration with staticfiles, this should be  STATIC_URL + 'admin/'.
-# Make it different to not host on CDN
-ADMIN_MEDIA_PREFIX = '/static-local/admin/'
-
-ADMIN_MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static-local', 'admin')
 
 # People who get code error notifications when DEBUG=False
 ADMINS = (('__PROJECT_NAME__ administrator', '__ADMIN_EMAIL__'),)
@@ -48,9 +41,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
 # List of locations of the fixture data files, in search order
 FIXTURE_DIRS = ()
 
-# The Site Title of your Admin-Interface. Change this instead of changing index.html
-GRAPPELLI_ADMIN_TITLE = "__PROJECT_NAME__"
-
 # A tuple of strings designating all the enabled applications
 INSTALLED_APPS = (
     'grappelli',
@@ -84,7 +74,7 @@ LOGIN_REDIRECT_URL = '/admin'
 MANAGERS = ADMINS
 
 # Absolute path to the directory that holds stored files.
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, '..', 'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 # URL that handles the media served from MEDIA_ROOT (must end in a slash)
 MEDIA_URL = '/uploads/'
@@ -115,13 +105,18 @@ SET_MIMETYPE = True
 SITE_ID = 1
 
 # Absolute path to the directory where collectstatic will collect static files
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected-static')
 
 # URL to use when referring to static files located in STATIC_ROOT
 STATIC_URL = '/static/'
 
 # Additional locations the staticfiles app will traverse
-STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'),)
+DEV_STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = (DEV_STATIC_ROOT,)
+
+# The Site Title of your Admin-Interface. Change this instead of changing index.html
+GRAPPELLI_ADMIN_TITLE = "__PROJECT_NAME__"
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
