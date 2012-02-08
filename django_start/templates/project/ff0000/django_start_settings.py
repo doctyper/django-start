@@ -22,8 +22,8 @@ def after_copy(no_prompt=False):
     os.system("mv $(find . -depth 1 -type d -name 'ff0000-red-boilerplate-*')/{*,.*} .")
 
     # Cleanup
-    os.system("rm -f $(find . -depth 1 -type d -name 'ff0000-red-boilerplate-*')")
-    os.system("rm -f tmp.zip")
+    os.system("find . -depth 1 -type d -name 'ff0000-red-boilerplate-*' -delete")
+    os.system("find . -depth 1 -type f -name 'tmp.zip' -delete")
 
     # Commit
     os.system("git commit -am 'Importing the RED Boilerplate http://github.com/ff0000/red-boilerplate'")
