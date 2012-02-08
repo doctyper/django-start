@@ -15,9 +15,19 @@ def after_copy(no_prompt=False):
     os.system("git init")
     os.system("git add .")
     os.system("git commit -m'Django project created with django-start'")
-    os.system("git remote add --fetch --no-tags --track master boilerplate git://github.com/ff0000/red-boilerplate.git")
-    os.system("git pull --squash boilerplate master")
-    os.system("git commit -m 'Importing the RED Boilerplate http://github.com/ff0000/red-boilerplate'")
+
+    # cURL from GitHub
+    os.system("curl -L https://github.com/ff0000/red-boilerplate/zipball/master -o tmp.zip")
+    os.system("unzip tmp.zip")
+    os.system("mv $(find . -depth 1 -type d -name 'ff0000-red-boilerplate-*')/{*,.*} .")
+
+    # Cleanup
+    os.system("rm -f $(find . -depth 1 -type d -name 'ff0000-red-boilerplate-*')")
+    os.system("rm -f tmp.zip")
+
+    # Commit
+    os.system("git commit -am 'Importing the RED Boilerplate http://github.com/ff0000/red-boilerplate'")
+
     os.system("git rm --ignore-unmatch README.md")
     os.system("git rm --ignore-unmatch LICENSE.txt")
     os.system("git mv INSTRUCTIONS.md README.md")
