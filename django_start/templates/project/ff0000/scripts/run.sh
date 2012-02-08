@@ -8,4 +8,4 @@ else
 fi
 
 source $BASEDIR/env/bin/activate
-$BASEDIR/project/manage.py testserver --noinput --traceback --addrport $SERVER development
+$BASEDIR/project/manage.py testserver --noinput --traceback --addrport $SERVER development #Add additional fixtures here
